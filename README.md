@@ -1,2 +1,2 @@
-# aplikacje_webowe
+# Aplikacje webowe
 Repozytorium zajęć
