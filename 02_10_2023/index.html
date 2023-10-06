@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="pl-PL">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Wiadomości</title>
+    <style>
+        *{
+            font-family:'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        }
+        #submitBtn{
+            background-color: dodgerblue;
+            color:white;
+            padding:1%;
+            border:0;
+            border-radius:15px;
+            transition:opacity 0.25s ease-in;
+        }
+        #submitBtn:hover{
+            opacity:0.5;
+            cursor:pointer;
+        }
+        textarea{
+            border-radius:15px;
+            padding:1%;
+            outline: none;
+        }
+    </style>
+</head>
+<body>
+    <h1>Wiadomości</h1>
+    <form action="/kontakt" method="post">
+        <label>
+            Treść wiadomości:<br>
+            <textarea rows="10" cols="70" placeholder="Napisz wiadomość..." name="message"></textarea>
+        </label><br>
+        <input type="submit" value="Wyślij" id="submitBtn">
+    </form>
+</body>
+</html>
