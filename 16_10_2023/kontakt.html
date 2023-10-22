@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="pl-PL">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Kontakt - Formularz</title>
+    <style>
+        form{
+            display:flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+        }
+        label{
+            display:flex;
+            flex-direction: column;
+        }
+        input{
+            border-radius:5px;
+            border:1px solid rgba(0,0,0,0.5);
+        }
+        textarea{
+            border-radius:5px;
+            border:1px solid rgba(0,0,0,0.5);
+        }
+        input[type="submit"]{
+            background-color: dodgerblue;
+            color:white;
+            font-size:150%;
+            margin-top: 5%;
+            padding:2%;
+            border-radius:10px;
+            border:0;
+            transition:opacity 0.25s ease-in;
+        }
+        input[type="submit"]:hover{
+            opacity:0.5;
+            cursor:pointer;
+        }
+    </style>
+</head>
+<body>
+    <form method="post" id="form1">
+        <label>
+            Imię:
+            <input type="text" name="firstName">
+        </label>
+        <label>
+            Adres e-mail:
+            <input type="email" name="email">
+        </label>
+        <label>
+            Temat:
+            <select name="topic">
+                <option value="orders">Zamówienia</option>
+                <option value="other">Inne</option>
+            </select>
+        </label>
+        <label>
+            Wiadomość:
+            <textarea cols="20" rows="20" name="message"></textarea>
+        </label>
+        <input type="submit" value="Wyślij">
+    </form>
+    <script type="text/javascript" src="/js/form.js"></script>
+</body>
+</html>
