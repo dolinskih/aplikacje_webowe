@@ -18,10 +18,11 @@ app.get('/', (req, res)=>{
     res.sendFile(path.join(__dirname, '/index.html'))
 })
 
-app.get('/kontakt', (req, res)=>{
+app.route('/kontakt')
+.get((req, res)=>{
     res.sendFile(path.join(__dirname, '/kontakt.html'))
 })
-.post('/kontakt', (req, res)=>{
+.post((req, res)=>{
     console.log(req.body)
     res.redirect('/')
 })
