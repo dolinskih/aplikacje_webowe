@@ -21,8 +21,7 @@ app.get('/', (req, res)=>{
 app.get('/kontakt', (req, res)=>{
     res.sendFile(path.join(__dirname, '/kontakt.html'))
 })
-
-app.post('/kontakt', (req, res)=>{
+.post('/kontakt', (req, res)=>{
     console.log(req.body)
     res.redirect('/')
 })
