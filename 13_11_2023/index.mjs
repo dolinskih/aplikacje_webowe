@@ -30,18 +30,6 @@ app.route('/kontakt')
 })
 .post(async (req, res)=>{
     const formData = req.body
-    // await prisma.form_submissions.create({
-    //     data: {
-    //         firstName: formData.firstName,
-    //         email: formData.email,
-    //         topic: formData.topic,
-    //         message: formData.message
-    //     }
-    // }).then(()=>{
-    //     res.redirect('/')
-    // }).catch((err)=>{
-    //     throw err
-    // })
     try{
         const db = await MongoClient.connect(uri)
         const dbo = await db.db("13_11")
