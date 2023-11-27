@@ -542,19 +542,19 @@ router.delete('/spacery', async(req: Request, res: Response)=>{
 
 //Wysyłanie danych do nierelacyjnej bazy danych MongoDB
 
-router.post('/message', async(req: Request, res: Response)=>{
-    const {name, data} = req.body
-    if(!name || !data){
+router.post('/mongo/:collection', async(req: Request, res: Response)=>{
+    const collection = req.params.collection
+    if(!collection){
         res.status(400).json({error: 400, message: "Incorrect input data."})
     }
     try{
         const db = await MongoClient.connect(uri)
         const dbo = await db.db("20_11")
-        const obj = {name: name, data: data}
+        const obj = req.body
         try{
-            await dbo.collection("messages").insertOne(obj)
-            console.log("New message added")
-            res.json({message: "Added new message"})
+            await dbo.collection(collection).insertOne(obj)
+            console.log(`New data added to ${collection} collection.`)
+            res.json({message: `New data added to ${collection} collection.`})
         } catch (e) {
             throw e
         }

@@ -791,43 +791,43 @@ router.delete('/spacery', function (req, res) { return __awaiter(void 0, void 0,
     });
 }); });
 //Wysyłanie danych do nierelacyjnej bazy danych MongoDB
-router.post('/message', function (req, res) { return __awaiter(void 0, void 0, void 0, function () {
-    var _a, name, data, db, dbo, obj, e_1, e_2;
-    return __generator(this, function (_b) {
-        switch (_b.label) {
+router.post('/mongo/:collection', function (req, res) { return __awaiter(void 0, void 0, void 0, function () {
+    var collection, db, dbo, obj, e_1, e_2;
+    return __generator(this, function (_a) {
+        switch (_a.label) {
             case 0:
-                _a = req.body, name = _a.name, data = _a.data;
-                if (!name || !data) {
+                collection = req.params.collection;
+                if (!collection) {
                     res.status(400).json({ error: 400, message: "Incorrect input data." });
                 }
-                _b.label = 1;
+                _a.label = 1;
             case 1:
-                _b.trys.push([1, 9, , 10]);
+                _a.trys.push([1, 9, , 10]);
                 return [4 /*yield*/, mongodb_1.MongoClient.connect(uri)];
             case 2:
-                db = _b.sent();
+                db = _a.sent();
                 return [4 /*yield*/, db.db("20_11")];
             case 3:
-                dbo = _b.sent();
-                obj = { name: name, data: data };
-                _b.label = 4;
+                dbo = _a.sent();
+                obj = req.body;
+                _a.label = 4;
             case 4:
-                _b.trys.push([4, 6, , 7]);
-                return [4 /*yield*/, dbo.collection("messages").insertOne(obj)];
+                _a.trys.push([4, 6, , 7]);
+                return [4 /*yield*/, dbo.collection(collection).insertOne(obj)];
             case 5:
-                _b.sent();
-                console.log("New message added");
-                res.json({ message: "Added new message" });
+                _a.sent();
+                console.log("New data added to ".concat(collection, " collection."));
+                res.json({ message: "New data added to ".concat(collection, " collection.") });
                 return [3 /*break*/, 7];
             case 6:
-                e_1 = _b.sent();
+                e_1 = _a.sent();
                 throw e_1;
             case 7: return [4 /*yield*/, db.close()];
             case 8:
-                _b.sent();
+                _a.sent();
                 return [3 /*break*/, 10];
             case 9:
-                e_2 = _b.sent();
+                e_2 = _a.sent();
                 throw e_2;
             case 10: return [2 /*return*/];
         }
