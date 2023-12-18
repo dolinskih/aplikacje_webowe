@@ -1,12 +1,29 @@
-import './App.css'
-import Homepage from './pages/Homepage'
-import About from './pages/About'
+import './App.scss'
+import Navbar from './components/navbar'
+import Footer from './components/footer'
+import {
+  BrowserRouter as Router,
+  Routes,
+  Route
+} from 'react-router-dom'
+import { routes } from './helpers/routing'
 
 function App() {
   return (
     <>
-      <Homepage/>
-      <About/>
+      <Router>
+        <Navbar/>
+        <Routes>
+          {routes.map((route)=>(
+            <Route 
+              key={route.path}
+              path={route.path}
+              element={route.element}
+            />
+          ))}
+        </Routes>
+        <Footer/>
+      </Router>
     </>
   )
 }
