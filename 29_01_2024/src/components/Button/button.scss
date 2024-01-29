@@ -1,0 +1,23 @@
+button{
+    background-color: dodgerblue;
+    border-radius:5px;
+    border:1px solid transparent;
+    color:white;
+    transition: background-color 0.25s ease-in-out, color 0.25s ease-in-out;
+    padding:1%;
+    font-size:115%;
+
+    &:hover{
+        background-color: white;
+        color:dodgerblue;
+        border: 1px solid dodgerblue;
+        cursor:pointer;
+    }
+
+    &:focus{
+        outline:none;
+        background-color: white;
+        color:dodgerblue;
+        border: 1px solid dodgerblue;
+    }
+}
