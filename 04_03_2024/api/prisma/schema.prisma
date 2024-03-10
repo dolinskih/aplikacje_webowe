@@ -1,0 +1,60 @@
+generator client {
+  provider = "prisma-client-js"
+}
+
+datasource db {
+  provider = "mysql"
+  url      = env("DATABASE_URL")
+}
+
+model karmienie {
+  id          Int         @id @default(autoincrement())
+  dogId       Int
+  keeperId    Int
+  time        DateTime    @db.DateTime(0)
+  psy         psy         @relation(fields: [dogId], references: [id], onUpdate: Restrict, map: "FK_dogIdFeed")
+  opiekunowie opiekunowie @relation(fields: [keeperId], references: [id], onUpdate: Restrict, map: "FK_keeperIdFeed")
+
+  @@index([dogId], map: "FK_dogIdFeed")
+  @@index([keeperId], map: "FK_keeperIdFeed")
+}
+
+model opiekunowie {
+  id        Int         @id @default(autoincrement())
+  firstName String      @db.VarChar(25)
+  lastName  String      @db.VarChar(50)
+  dogId     Int
+  karmienie karmienie[]
+  psy       psy         @relation(fields: [dogId], references: [id], onUpdate: Restrict, map: "FK_dogId")
+  spacery   spacery[]
+
+  @@index([dogId], map: "FK_dogId")
+}
+
+model psy {
+  id          Int           @id @default(autoincrement())
+  name        String        @db.VarChar(25)
+  karmienie   karmienie[]
+  opiekunowie opiekunowie[]
+  psy_dane    psy_dane?
+  spacery     spacery[]
+}
+
+model psy_dane {
+  id     Int    @unique(map: "id")
+  weight Int
+  breed  String @db.VarChar(30)
+  psy    psy    @relation(fields: [id], references: [id], onUpdate: Restrict, map: "FK_Id")
+}
+
+model spacery {
+  id          Int         @id @default(autoincrement())
+  dogId       Int
+  keeperId    Int
+  time        DateTime    @db.DateTime(0)
+  psy         psy         @relation(fields: [dogId], references: [id], onUpdate: Restrict, map: "FK_DogIdWalk")
+  opiekunowie opiekunowie @relation(fields: [keeperId], references: [id], onUpdate: Restrict, map: "FK_keeperId")
+
+  @@index([dogId], map: "FK_DogIdWalk")
+  @@index([keeperId], map: "FK_keeperId")
+}
