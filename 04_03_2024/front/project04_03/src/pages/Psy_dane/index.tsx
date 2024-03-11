@@ -1,6 +1,7 @@
 import styled from "styled-components"
 import Heading from "../../components/heading"
 import { usePsy_dane } from "../../services/usePsy_dane"
+import AddPsy_daneForm from "../../components/addPsy_daneForm"
 
 const Table = styled.table`
     border-collapse: collapse;
@@ -42,6 +43,7 @@ function Psy_dane(){
                         )))
                 }
             </Table>
+            <AddPsy_daneForm/>
         </div>
     )
 }

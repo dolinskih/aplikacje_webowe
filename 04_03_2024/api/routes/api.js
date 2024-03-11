@@ -53,6 +53,9 @@ var notFoundError = {
     message: "Not Found."
 };
 router.use(bodyParser.json());
+router.use(bodyParser.urlencoded({
+    extended: true
+}));
 //GET dla wszystkich obiektów:
 router.get('/psy', function (req, res) { return __awaiter(void 0, void 0, void 0, function () {
     var dogs;
@@ -140,14 +143,14 @@ router.get('/spacery', function (req, res) { return __awaiter(void 0, void 0, vo
     });
 }); });
 //POST, PUT, PATCH, DELETE dla modelu psy
-router.post('/psy/:name', urlencodedParser, function (req, res) { return __awaiter(void 0, void 0, void 0, function () {
+router.post('/psy', function (req, res) { return __awaiter(void 0, void 0, void 0, function () {
     return __generator(this, function (_a) {
         switch (_a.label) {
             case 0:
-                if (!req.params.name) return [3 /*break*/, 2];
+                if (!req.body.name) return [3 /*break*/, 2];
                 return [4 /*yield*/, prisma.psy.create({
                         data: {
-                            name: req.params.name.toString()
+                            name: req.body.name.toString()
                         }
                     }).then(function () {
                         res.json({ message: "Dog added." });

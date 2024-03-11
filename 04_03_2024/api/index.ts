@@ -6,7 +6,11 @@ const app:Express = express()
 const port = 3000
 
 app.use((req, res, next) => {
-    res.header('Access-Control-Allow-Origin', '*');
+    res.header({
+        'Access-Control-Allow-Origin': '*',
+        "Access-Control-Allow-Methods": "GET,PUT,POST,DELETE,PATCH,OPTIONS",
+        "Access-Control-Allow-Headers": "*"
+    });
     next();
 });
 

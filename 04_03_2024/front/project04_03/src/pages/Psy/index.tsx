@@ -1,6 +1,7 @@
 import styled from "styled-components"
 import Heading from "../../components/heading"
 import { usePsy } from "../../services/usePsy"
+import AddPsyForm from "../../components/addPsyForm"
 
 const Table = styled.table`
     border-collapse: collapse;
@@ -10,6 +11,9 @@ const Table = styled.table`
     td, th{
         border: 1px solid black;
     }
+`
+
+const Form = styled(AddPsyForm)`
 `
 
 function Psy(){
@@ -39,6 +43,7 @@ function Psy(){
                 }
             </Table>
             <Heading level={2} title={'Dodaj psa'}/>
+            <Form/>
         </div>
     )
 }

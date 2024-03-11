@@ -19,6 +19,9 @@ const notFoundError = {
 }
 
 router.use(bodyParser.json())
+router.use(bodyParser.urlencoded({     // to support URL-encoded bodies
+    extended: true
+  })); 
 
 //GET dla wszystkich obiektów:
 
@@ -79,13 +82,13 @@ router.get('/spacery', async(req: Request, res: Response)=>{
 
 //POST, PUT, PATCH, DELETE dla modelu psy
 
-router.post('/psy/:name', urlencodedParser, async (req: Request, res: Response)=>{
+router.post('/psy', async (req: Request, res: Response)=>{
 
-    if(req.params.name)
+    if(req.body.name)
     {
         await prisma.psy.create({
             data: {
-                name: req.params.name.toString()
+                name: req.body.name.toString()
             }
         }).then(()=>{
             res.json({message : "Dog added."})
