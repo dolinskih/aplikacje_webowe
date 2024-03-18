@@ -93,7 +93,7 @@ router.post('/psy', async (req: Request, res: Response)=>{
         }).then(()=>{
             res.json({message : "Dog added."})
         }).catch((err)=>{
-            throw err
+            res.status(500).json({error: 500, message: "Server problem."})
         })
     }
 })
@@ -154,7 +154,9 @@ router.delete('/psy/:id', async(req: Request, res: Response)=>{
 //POST, PUT, PATCH, DELETE dla modelu karmienie
 
 router.post('/karmienie', async(req: Request, res: Response)=>{
-    const {dogId, keeperId, time} = req.body
+    const dogId = Number(req.body.dogId)
+    const keeperId = Number(req.body.keeperId)
+    const time = new Date(req.body.time)
     if(!dogId || !keeperId || !time)
     {
         res.status(400).json({error: 400, message: "Incorrect input data."})
@@ -254,7 +256,8 @@ router.delete('/karmienie', async(req: Request, res: Response)=>{
 //POST, PUT, PATCH, DELETE dla modelu opiekunowie
 
 router.post('/opiekunowie', async(req: Request, res: Response)=>{
-    const {firstName, lastName, dogId} = req.body
+    const {firstName, lastName} = req.body
+    const dogId = Number(req.body.dogId)
     if(!firstName || !lastName || !dogId){
         res.status(400).json({error: 400, message: "Incorrect input data."})
     }
@@ -352,7 +355,9 @@ router.delete('/karmienie', async(req: Request, res: Response)=>{
 //POST, PUT, PATCH, DELETE dla modelu psy_dane
 
 router.post('/psy_dane', async(req: Request, res: Response)=>{
-    const {id, weight, breed} = req.body
+    const {breed} = req.body
+    const id = Number(req.body.id)
+    const weight = Number(req.body.weight)
     if(!id || !weight || !breed){
         res.status(400).json({error: 400, message: "Incorrect input data."})
     }
@@ -448,7 +453,9 @@ router.delete('/psy_dane', async(req: Request, res: Response)=>{
 //POST, PUT, PATCH, DELETE dla modelu spacery
 
 router.post('/spacery', async(req: Request, res: Response)=>{
-    const {dogId, keeperId, time} = req.body
+    const dogId = Number(req.body.dogId)
+    const keeperId = Number(req.body.keeperId)
+    const time = new Date(req.body.time)
     if(!dogId || !keeperId || !time){
         res.status(400).json({error: 400, message: "Incorrect input data."})
     }

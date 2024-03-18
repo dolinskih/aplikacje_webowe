@@ -3,17 +3,15 @@ import { routes } from "../../helpers/routing"
 
 function Navbar(){
     return (
-        <div>
-            <nav>
-                <ul>
+        <nav className="navbar navbar-expand-lg">
+                <ul className="navbar-nav">
                     {routes.map((route)=>(
-                        <li key={route.path}>
-                            <Link to={route.path}>{route.label}</Link>
+                        <li key={route.path} className="nav-item">
+                            <Link to={route.path} className="nav-link active">{route.label}</Link>
                         </li>
                     ))}
                 </ul>
-            </nav>
-        </div>
+        </nav>
     )
 }
 

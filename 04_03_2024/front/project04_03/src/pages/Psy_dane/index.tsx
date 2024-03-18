@@ -43,6 +43,7 @@ function Psy_dane(){
                         )))
                 }
             </Table>
+            <Heading level={2} title={'Dodaj dane psa'}/>
             <AddPsy_daneForm/>
         </div>
     )

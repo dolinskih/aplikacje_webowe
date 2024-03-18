@@ -1,6 +1,7 @@
 import styled from "styled-components"
 import Heading from "../../components/heading"
 import { useOpiekunowie } from "../../services/useOpiekunowie"
+import AddOpiekunowieForm from "../../components/addOpiekunowieForm"
 
 const Table = styled.table`
     border-collapse: collapse;
@@ -46,6 +47,8 @@ function Opiekunowie(){
                         )))
                 }
             </Table>
+            <Heading level={2} title={'Dodaj opiekuna'}/>
+            <AddOpiekunowieForm/>
         </div>
     )
 }

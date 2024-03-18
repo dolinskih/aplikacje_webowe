@@ -155,7 +155,7 @@ router.post('/psy', function (req, res) { return __awaiter(void 0, void 0, void 
                     }).then(function () {
                         res.json({ message: "Dog added." });
                     }).catch(function (err) {
-                        throw err;
+                        res.status(500).json({ error: 500, message: "Server problem." });
                     })];
             case 1:
                 _a.sent();
@@ -235,17 +235,19 @@ router.delete('/psy/:id', function (req, res) { return __awaiter(void 0, void 0,
 }); });
 //POST, PUT, PATCH, DELETE dla modelu karmienie
 router.post('/karmienie', function (req, res) { return __awaiter(void 0, void 0, void 0, function () {
-    var _a, dogId, keeperId, time, err_1;
-    return __generator(this, function (_b) {
-        switch (_b.label) {
+    var dogId, keeperId, time, err_1;
+    return __generator(this, function (_a) {
+        switch (_a.label) {
             case 0:
-                _a = req.body, dogId = _a.dogId, keeperId = _a.keeperId, time = _a.time;
+                dogId = Number(req.body.dogId);
+                keeperId = Number(req.body.keeperId);
+                time = new Date(req.body.time);
                 if (!dogId || !keeperId || !time) {
                     res.status(400).json({ error: 400, message: "Incorrect input data." });
                 }
-                _b.label = 1;
+                _a.label = 1;
             case 1:
-                _b.trys.push([1, 3, , 4]);
+                _a.trys.push([1, 3, , 4]);
                 return [4 /*yield*/, prisma.karmienie.create({
                         data: {
                             dogId: dogId,
@@ -256,10 +258,10 @@ router.post('/karmienie', function (req, res) { return __awaiter(void 0, void 0,
                         res.status(201).json({ message: "New feeding added." });
                     })];
             case 2:
-                _b.sent();
+                _a.sent();
                 return [3 /*break*/, 4];
             case 3:
-                err_1 = _b.sent();
+                err_1 = _a.sent();
                 res.status(500).json({ error: 500, message: "Server problem." });
                 return [3 /*break*/, 4];
             case 4: return [2 /*return*/];
@@ -378,7 +380,8 @@ router.post('/opiekunowie', function (req, res) { return __awaiter(void 0, void 
     return __generator(this, function (_b) {
         switch (_b.label) {
             case 0:
-                _a = req.body, firstName = _a.firstName, lastName = _a.lastName, dogId = _a.dogId;
+                _a = req.body, firstName = _a.firstName, lastName = _a.lastName;
+                dogId = Number(req.body.dogId);
                 if (!firstName || !lastName || !dogId) {
                     res.status(400).json({ error: 400, message: "Incorrect input data." });
                 }
@@ -515,17 +518,19 @@ router.delete('/karmienie', function (req, res) { return __awaiter(void 0, void 
 }); });
 //POST, PUT, PATCH, DELETE dla modelu psy_dane
 router.post('/psy_dane', function (req, res) { return __awaiter(void 0, void 0, void 0, function () {
-    var _a, id, weight, breed, err_9;
-    return __generator(this, function (_b) {
-        switch (_b.label) {
+    var breed, id, weight, err_9;
+    return __generator(this, function (_a) {
+        switch (_a.label) {
             case 0:
-                _a = req.body, id = _a.id, weight = _a.weight, breed = _a.breed;
+                breed = req.body.breed;
+                id = Number(req.body.id);
+                weight = Number(req.body.weight);
                 if (!id || !weight || !breed) {
                     res.status(400).json({ error: 400, message: "Incorrect input data." });
                 }
-                _b.label = 1;
+                _a.label = 1;
             case 1:
-                _b.trys.push([1, 3, , 4]);
+                _a.trys.push([1, 3, , 4]);
                 return [4 /*yield*/, prisma.psy_dane.create({
                         data: {
                             id: id,
@@ -538,10 +543,10 @@ router.post('/psy_dane', function (req, res) { return __awaiter(void 0, void 0, 
                         throw err;
                     })];
             case 2:
-                _b.sent();
+                _a.sent();
                 return [3 /*break*/, 4];
             case 3:
-                err_9 = _b.sent();
+                err_9 = _a.sent();
                 res.status(500).json({ error: 500, message: "Server problem." });
                 return [3 /*break*/, 4];
             case 4: return [2 /*return*/];
@@ -654,17 +659,19 @@ router.delete('/psy_dane', function (req, res) { return __awaiter(void 0, void 0
 }); });
 //POST, PUT, PATCH, DELETE dla modelu spacery
 router.post('/spacery', function (req, res) { return __awaiter(void 0, void 0, void 0, function () {
-    var _a, dogId, keeperId, time, err_13;
-    return __generator(this, function (_b) {
-        switch (_b.label) {
+    var dogId, keeperId, time, err_13;
+    return __generator(this, function (_a) {
+        switch (_a.label) {
             case 0:
-                _a = req.body, dogId = _a.dogId, keeperId = _a.keeperId, time = _a.time;
+                dogId = Number(req.body.dogId);
+                keeperId = Number(req.body.keeperId);
+                time = new Date(req.body.time);
                 if (!dogId || !keeperId || !time) {
                     res.status(400).json({ error: 400, message: "Incorrect input data." });
                 }
-                _b.label = 1;
+                _a.label = 1;
             case 1:
-                _b.trys.push([1, 3, , 4]);
+                _a.trys.push([1, 3, , 4]);
                 return [4 /*yield*/, prisma.spacery.create({
                         data: {
                             dogId: dogId,
@@ -677,10 +684,10 @@ router.post('/spacery', function (req, res) { return __awaiter(void 0, void 0, v
                         throw err;
                     })];
             case 2:
-                _b.sent();
+                _a.sent();
                 return [3 /*break*/, 4];
             case 3:
-                err_13 = _b.sent();
+                err_13 = _a.sent();
                 res.status(500).json({ error: 500, message: "Server problem." });
                 return [3 /*break*/, 4];
             case 4: return [2 /*return*/];

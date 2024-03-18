@@ -4,11 +4,11 @@ import axios from "axios"
 import { Psy_dane } from "../../types/psy_dane"
 
 function AddPsy_daneForm(){
-    const mutation = useMutation<Psy_dane, unknown>({mutationKey: ['psy'], mutationFn: ()=>{
+    const mutation = useMutation<Psy_dane, unknown>({mutationKey: ['psy_dane'], mutationFn: ()=>{
         return axios.post('http://localhost:3000/api/psy_dane', pies_dane)
     }})
     const [pies_dane, setPies_dane] = useState({
-        id: '',
+        id: 0,
         weight: 0,
         breed: ''
     })

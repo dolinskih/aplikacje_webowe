@@ -9,6 +9,7 @@ import {
 import { routes } from './helpers/routing'
 import Navbar from './components/navbar'
 import Footer from './components/footer'
+import "bootstrap/dist/css/bootstrap.min.css";
 
 const queryClient = new QueryClient()
 

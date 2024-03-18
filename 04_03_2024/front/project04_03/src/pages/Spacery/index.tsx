@@ -1,6 +1,7 @@
 import styled from "styled-components"
 import Heading from "../../components/heading"
 import { useSpacery } from "../../services/useSpacery"
+import AddSpaceryForm from "../../components/addSpaceryForm"
 
 const Table = styled.table`
     border-collapse: collapse;
@@ -46,6 +47,8 @@ function Spacery(){
                         )))
                 }
             </Table>
+            <Heading level={2} title={'Dodaj spacer'}/>
+            <AddSpaceryForm/>
         </div>
     )
 }

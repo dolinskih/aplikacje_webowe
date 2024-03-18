@@ -1,6 +1,7 @@
 import styled from "styled-components"
 import Heading from "../../components/heading"
 import { useKarmienie } from "../../services/useKarmienie"
+import AddKarmienieForm from "../../components/addKarmienieForm"
 
 const Table = styled.table`
     border-collapse: collapse;
@@ -46,6 +47,8 @@ function Karmienie(){
                         )))
                 }
             </Table>
+            <Heading level={2} title={'Dodaj karmienie'}/>
+            <AddKarmienieForm/>
         </div>
     )
 }
