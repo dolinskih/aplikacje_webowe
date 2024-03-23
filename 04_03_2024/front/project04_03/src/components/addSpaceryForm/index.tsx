@@ -2,6 +2,13 @@ import { ChangeEvent, FormEvent, useState } from "react"
 import { useMutation } from "@tanstack/react-query"
 import axios from "axios"
 import { Spacery } from "../../types/spacery"
+import styled from "styled-components"
+
+const Form = styled.form`
+    display:flex;
+    flex-direction:column;
+    align-items:flex-start;
+`
 
 function AddSpaceryForm(){
     const mutation = useMutation<Spacery, unknown>({mutationKey: ['spacery'], mutationFn: ()=>{
@@ -23,15 +30,15 @@ function AddSpaceryForm(){
     }
 
     return(
-        <form onSubmit={handleSubmit}>
+        <Form onSubmit={handleSubmit}>
             <label htmlFor="dogId">ID psa:</label>
             <input type="number" name="dogId" value={spacer.dogId} onChange={handleChange}/>
             <label htmlFor="keeperId">ID opiekuna:</label>
             <input type="number" name="keeperId" value={spacer.keeperId} onChange={handleChange}/>
             <label htmlFor="time">Czas:</label>
             <input type="datetime-local" name="time" value={spacer.time} onChange={handleChange}/>
-            <input type="submit" value="Dodaj"/>
-        </form>
+            <input type="submit" className="btn btn-primary m-1" value="Dodaj"/>
+        </Form>
     )
 }
 

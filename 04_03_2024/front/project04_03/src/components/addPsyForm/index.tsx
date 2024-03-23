@@ -2,6 +2,13 @@ import { ChangeEvent, FormEvent, useState } from "react"
 import { useMutation } from "@tanstack/react-query"
 import axios from "axios"
 import { Psy } from "../../types/psy"
+import styled from "styled-components"
+
+const Form = styled.form`
+    display:flex;
+    flex-direction:column;
+    align-items:flex-start;
+`
 
 function AddPsyForm(){
     const mutation = useMutation<Psy, unknown>({mutationKey: ['psy'], mutationFn: ()=>{
@@ -22,11 +29,11 @@ function AddPsyForm(){
     }
 
     return(
-        <form onSubmit={handleSubmit}>
+        <Form onSubmit={handleSubmit}>
             <label htmlFor="name">Imię:</label>
             <input type="text" name="name" value={pies.name} onChange={handleChange}/>
-            <input type="submit" value="Dodaj"/>
-        </form>
+            <input type="submit" className="btn btn-primary m-1" value="Dodaj"/>
+        </Form>
     )
 }
 
